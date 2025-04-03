@@ -18,7 +18,7 @@ This tutorial outlines the steps to analyze the kinetics of barrier-crossing eve
 
      Activate the newly created environment:
      ```
-     conda activate PyTorch
+     conda activate pytorch
      ```
    - **Install Pytorch and other required packages**
 

@@ -7,6 +7,20 @@ This tutorial outlines the steps to analyze the kinetics of barrier-crossing eve
 2. Artificial Neural Networks (ANNs) ([Schneider et al., _PRL_ 2017](https://doi.org/10.1103/PhysRevLett.119.150601))
 3. Infrequent Metadynamics (IMetaD) ([Tiwary and Parrinello, _PRL_ 2013](https://doi.org/10.1103/PhysRevLett.111.230602), [Salvalaglio et al., _JCTC_ 2014](https://doi.org/10.1021/ct500040r))
 
+## Installation
+   - Create a conda environment for PyTorch.
+      ```
+      conda create -n pytorch
+      ``` 
+   - Activate the environment.
+     ```
+     conda activate PyTorch
+     ```
+   - Install Pytorch and other required packages.
+     ```
+     conda install pytorch::pytorch
+     ```
+     
 ## Steps
 1. ### Compute the free energy surface _F(**s**)_ from TASS simulations
    - Generate the free energy surface  _F(**s**)_ using your TASS simulation data.

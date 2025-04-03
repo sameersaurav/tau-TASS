@@ -35,7 +35,6 @@ This tutorial outlines the steps to analyze the kinetics of barrier-crossing eve
    - Run the command:
      ```
      python NN.py
-
       ``` 
    - Output Verification:
      - Check the training and validation loss plots. Both should ideally be close to zero.

@@ -26,7 +26,7 @@ For details, kindly see the following -
    - Keep "plumed.dat", "HILL" file with the system's topolpgy and paramater file.
    - Start IMetaD, taking  V<sup>b</sup><sub>0</sub> (<strong>s</strong>) as the initial bias, until barrier crossing.
    - Note down the "simulation time". Multiply with the "acceleration factor" to recover "unbiased simulation time".
-5. #### Statistics 
+5. ### Statistics 
    - Perform multiple simulations with the same initial structure but different velocities.
    - Run "python cdf.py". It will compute the _empirical_ cumulative distribution function (ECDF) from the computed unbiased transition times and fit to Theoretical CDF (TCDF) to estimate $\tau$.
    - Run "python ks.py". It will compute the "p-value".

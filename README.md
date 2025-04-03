@@ -26,7 +26,7 @@ This tutorial outlines the steps to analyze the kinetics of barrier-crossing eve
    - **Model file:** Ensure that "free_energy_net.pt" is in the same directory.
    - **Execution:** Run the command:
      ```
-     python MD.py"
+     python MD.py
      ``` 
    - **Bias Extraction:** From the resulting bias file, extract the bias value corresponding to 90% of the transition barrier filling. Save this value as "HILL".
 5. ### Perform MD with "Infrequent Metadynamics (IMetaD)".

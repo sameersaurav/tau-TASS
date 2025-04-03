@@ -8,41 +8,41 @@ This tutorial outlines the steps to analyze the kinetics of barrier-crossing eve
 3. Infrequent Metadynamics (IMetaD) ([Tiwary and Parrinello, _PRL_ 2013](https://doi.org/10.1103/PhysRevLett.111.230602), [Salvalaglio et al., _JCTC_ 2014](https://doi.org/10.1021/ct500040r))
 
 ## Steps to Create a Conda Environment for PyTorch
-   - **Create a conda environment**
+   - **Create a Conda Environment**
 
      Run the following command to create a new conda environment named `pytorch`: 
       ```
       conda create -n pytorch
       ``` 
-   - **Activate the environment**
+   - **Activate the Environment**
 
      Activate the newly created environment:
      ```
      conda activate pytorch
      ```
-   - **Install Pytorch and other required packages**
+   - **Install Pytorch and Other Required Packages**
 
      Install PyTorch using the following command:
      ```
      conda install pytorch::pytorch
      ```
      
-## Steps
+## Simulation and Analysis Steps
 1. ### Compute the free energy surface _F(**s**)_ from TASS simulations
    - Generate the free energy surface  _F(**s**)_ using your TASS simulation data.
-2. ### Train an ANN to represent _F(**s**)_
-   - use the file `free_energy.dat` as input for the neural network.
-   - Run the command:
+2. ### Train an ANN to Represent _F(**s**)_
+   - **Input Data:** use the file `free_energy.dat` as input for the neural network.
+   - **Execution:** Run the command:
      ```
      python NN.py
       ``` 
-   - Output Verification:
+   - **Output Verification:**
      - Check the training and validation loss plots. Both should ideally be close to zero.
      - Verify the generated plot of the predicted free energy surface for correctness.
      - **Model Saving**: The trained model is saved as `free_energy.pt`.
-3. ### Compute the bias V<sup>b</sup><sub>0</sub> (<strong>s</strong>)
+3. ### Compute the Bias V<sup>b</sup><sub>0</sub> (<strong>s</strong>)
    - **Parameters**: Specify the molecular dynamics (MD) time step and the well-tempered metadynamics (WTMetaD) parameters (Gaussian's height, width, and bias factor) along with the location of the transition state.
-   - **Model file:** Ensure that `free_energy.pt` is in the same directory.
+   - **Model File:** Ensure that `free_energy.pt` is in the same directory.
    - **Execution:** Run the command:
      ```
      python MD.py
@@ -54,12 +54,12 @@ This tutorial outlines the steps to analyze the kinetics of barrier-crossing eve
    - **Time Calculation:** Record the simulation time and multiply it by the acceleration factor to obtain the corresponding unbiased simulation time.
 5. ### Statistical Analysis 
    - **Multiple Simulations:** Run several simulations using the same initial structure but with different initial velocities.
-   - **$\tau$ estimation**
+   - **$\tau$ Estimation:**  Run the following command:
      ````
      python cdf.py
      ````
      This script computes the empirical cumulative distribution function (ECDF) from the unbiased transition times and fits it to the theoretical cumulative distribution function (TCDF) to estimate the characteristic time $\tau$.
-   - **P-Value Calculation:**
+   - **p-Value calculation:** Run the following command:
       ````
      python ks.py
      ````

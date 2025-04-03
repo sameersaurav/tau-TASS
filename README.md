@@ -9,16 +9,19 @@ This tutorial outlines the steps to analyze the kinetics of barrier-crossing eve
 
 ## Steps to Create a Conda Environment for PyTorch
    - **Create a conda environment**
+
      Run the following command to create a new conda environment named `pytorch`: 
       ```
       conda create -n pytorch
       ``` 
    - **Activate the environment**
+
      Activate the newly created environment:
      ```
      conda activate PyTorch
      ```
    - **Install Pytorch and other required packages**
+
      Install PyTorch using the following command:
      ```
      conda install pytorch::pytorch

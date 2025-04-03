@@ -20,10 +20,10 @@ This tutorial outlines the steps to analyze the kinetics of barrier-crossing eve
    - Output Verification:
      - Check the training and validation loss plots. Both should ideally be close to zero.
      - Verify the generated plot of the predicted free energy surface for correctness.
-     - **Model Saving**: The trained model is saved as `free_energy_net.pt`.
+     - **Model Saving**: The trained model is saved as `free_energy.pt`.
 3. ### Compute the bias V<sup>b</sup><sub>0</sub> (<strong>s</strong>)
    - **Parameters**: Specify the molecular dynamics (MD) time step and the well-tempered metadynamics (WTMetaD) parameters (Gaussian's height, width, and bias factor) along with the location of the transition state.
-   - **Model file:** Ensure that `free_energy_net.pt` is in the same directory.
+   - **Model file:** Ensure that `free_energy.pt` is in the same directory.
    - **Execution:** Run the command:
      ```
      python MD.py

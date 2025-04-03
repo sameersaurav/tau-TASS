@@ -11,7 +11,7 @@ This tutorial outlines the steps to analyze the kinetics of barrier-crossing eve
 1. ### Compute the free energy surface _F(**s**)_ from TASS simulations
    - Generate the free energy surface  _F(**s**)_ using your TASS simulation data.
 2. ### Train an ANN to represent _F(**s**)_
-   - use the file "free_energy.dat" as input for the neural network.
+   - use the file `free_energy.dat` as input for the neural network.
    - Run the command:
      ```
      python NN.py
@@ -20,17 +20,17 @@ This tutorial outlines the steps to analyze the kinetics of barrier-crossing eve
    - Output Verification:
      - Check the training and validation loss plots. Both should ideally be close to zero.
      - Verify the generated plot of the predicted free energy surface for correctness.
-     - **Model Saving**: The trained model is saved as "free_energy_net.pt".
+     - **Model Saving**: The trained model is saved as `free_energy_net.pt`.
 3. ### Compute the bias V<sup>b</sup><sub>0</sub> (<strong>s</strong>)
    - **Parameters**: Specify the molecular dynamics (MD) time step and the well-tempered metadynamics (WTMetaD) parameters (Gaussian's height, width, and bias factor) along with the location of the transition state.
-   - **Model file:** Ensure that "free_energy_net.pt" is in the same directory.
+   - **Model file:** Ensure that `free_energy_net.pt` is in the same directory.
    - **Execution:** Run the command:
      ```
      python MD.py
      ``` 
-   - **Bias Extraction:** From the resulting bias file, extract the bias value corresponding to 90% of the transition barrier filling. Save this value as "HILL".
+   - **Bias Extraction:** From the resulting bias file, extract the bias value corresponding to 90% of the transition barrier filling. Save these values in the `HILL` file.
 4. ### Perform MD with "Infrequent Metadynamics (IMetaD)".
-   - **Preparation:** Place the files "plumed.dat" and "HILL" in the working directory along with the system’s topology and parameter files.
+   - **Preparation:** Place the files `plumed.dat` and `HILL` in the working directory along with the system’s topology and parameter files.
    - **Execution:** Start the IMetaD simulation using V<sup>b</sup><sub>0</sub> (<strong>s</strong>) as the initial bias. Simulate until a barrier-crossing event occurs.
    - **Time Calculation:** Record the simulation time and multiply it by the acceleration factor to obtain the corresponding unbiased simulation time.
 5. ### Statistical Analysis 

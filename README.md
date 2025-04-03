@@ -1,10 +1,10 @@
 # Tutorial to perform kinetics from Temperature Accelerated Sliced Sampling Simulations
 
-## Prerequisites 
-Packages-
-1. Pytorch
+## Introduction
+This is a tutorial for performing Kinetics of Barrier Crossing Events from  Temperature Accelerated Sliced Sampling Simulations (TASS) simulations. 
 
-Concepts -
+For details, kindly see the following -
+
 1. Temperature Accelerated Sliced Sampling (TASS) ([Awasthi & Nair, _JCP_ 2017](https://doi.org/10.1063/1.4977704),  [Pal et al., _JCC_ 2021](https://doi.org/10.1063/1.4977704), [Tutorial](https://sites.google.com/view/the-nnn-group/tutorials/tass?authuser=0))
 2. Artificial Neural Networks (ANNs) ([Schneider et al., _PRL_ 2017](https://doi.org/10.1103/PhysRevLett.119.150601))
 3. Inrefequent Metadynamics (IMetaD) ([Tiwary and Parrinello, _PRL_ 2013](https://doi.org/10.1103/PhysRevLett.111.230602), [Salvalaglio et al., _JCTC_ 2014](https://doi.org/10.1021/ct500040r))

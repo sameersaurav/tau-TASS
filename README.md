@@ -1,6 +1,6 @@
 # Tutorial to perform kinetics from Temperature Accelerated Sliced Sampling Simulations
 
-## Introduction
+## Overview
 This tutorial outlines the steps to analyze the kinetics of barrier-crossing events from Temperature Accelerated Sliced Sampling (TASS) simulations. For further details, please refer to the following sources:
 
 1. Temperature Accelerated Sliced Sampling (TASS) ([Awasthi & Nair, _JCP_ 2017](https://doi.org/10.1063/1.4977704),  [Pal et al., _JCC_ 2021](https://doi.org/10.1063/1.4977704), [Tutorial](https://sites.google.com/view/the-nnn-group/tutorials/tass?authuser=0))
@@ -65,5 +65,6 @@ This tutorial outlines the steps to analyze the kinetics of barrier-crossing eve
      python ks.py
      ````
      This will compute the p-value for the fit.
-  
-  
+     
+## Copyright
+   Copyright (c) S. Saurav & [N. N. Nair](https://home.iitk.ac.in/~nnair/)

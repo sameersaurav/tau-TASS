@@ -7,16 +7,19 @@ This tutorial outlines the steps to analyze the kinetics of barrier-crossing eve
 2. Artificial Neural Networks (ANNs) ([Schneider et al., _PRL_ 2017](https://doi.org/10.1103/PhysRevLett.119.150601))
 3. Infrequent Metadynamics (IMetaD) ([Tiwary and Parrinello, _PRL_ 2013](https://doi.org/10.1103/PhysRevLett.111.230602), [Salvalaglio et al., _JCTC_ 2014](https://doi.org/10.1021/ct500040r))
 
-## Installation
-   - Create a conda environment for PyTorch.
+## Steps to Create a Conda Environment for PyTorch
+   - **Create a conda environment**
+     Run the following command to create a new conda environment named `pytorch`: 
       ```
       conda create -n pytorch
       ``` 
-   - Activate the environment.
+   - **Activate the environment**
+     Activate the newly created environment:
      ```
      conda activate PyTorch
      ```
-   - Install Pytorch and other required packages.
+   - **Install Pytorch and other required packages**
+     Install PyTorch using the following command:
      ```
      conda install pytorch::pytorch
      ```

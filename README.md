@@ -10,7 +10,7 @@ This tutorial outlines the steps to analyze the kinetics of barrier-crossing eve
 ## Steps
 1. ### Compute the free energy surface _F(**s**)_ from TASS simulations
    - Generate the free energy surface  _F(**s**)_ using your TASS simulation data.
-3. ### Train an ANN to represent F(**s**)
+3. ### Train an ANN to represent _F(**s**)_
    - use the file "free_energy.dat" as input for the neural network.
    - Run the command:
      ```

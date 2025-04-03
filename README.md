@@ -64,6 +64,3 @@ This tutorial outlines the steps to analyze the kinetics of barrier-crossing eve
      python ks.py
      ````
      This will compute the p-value for the fit.
-     
-## Copyright
-   Copyright (c) S. Saurav & [N. N. Nair](https://home.iitk.ac.in/~nnair/)

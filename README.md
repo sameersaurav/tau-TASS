@@ -74,7 +74,7 @@ Calculate the static bias potential required in the subsequent infrequent metady
    ```
   This calculates the p-value for the fit.
 
-## Contributors:
+## Contributors
 - Prof. Nisanth N. Nair, IIT Kanpur
  - Sameer Saurav, IIT Kanpur
 ## Citation

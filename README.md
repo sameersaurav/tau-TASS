@@ -1,4 +1,4 @@
-# Kinetics of Barrier Crossing Events from  Temperature Accelerated Sliced Sampling Simulations
+# Kinetics of Barrier Crossing Events from Temperature Accelerated Sliced Sampling Simulations
 ## Description
 This tutorial outlines the workflow for computing the rate constant of barrier-crossing events from Temperature Accelerated Sliced Sampling (TASS) simulations.
 
@@ -17,7 +17,7 @@ Before running the analysis, ensure the necessary Python environment is set up.
   ```
   conda install pytorch::pytorch
   ```
-## Artificial Neural Network (ANN) Representation  of the Free Energy Surfaces (FES)
+## Artificial Neural Network (ANN) Representation of the Free Energy Surfaces (FES)
 
 - **Compute the FES $F(s)$:**
   - Generate the $F(s)$ from your existing TASS simulation data.
@@ -27,7 +27,10 @@ Before running the analysis, ensure the necessary Python environment is set up.
 
   Train a neural network to learn the continuous free energy landscape from the discrete data points.
   - **Input:** Ensure `free_energy.dat` is in the working directory.
-  - **Execution:** ``` python NN.py ```
+  - **Execution:**
+    ```
+    python NN.py
+    ```
 - **Verification:**
   - Check the training and validation loss plots. Both should converge close to zero.
   - Compare the predicted FES against the original FES to ensure accuracy.
@@ -38,7 +41,10 @@ Calculate the static bias potential required in the subsequent infrequent metady
 - **Requirements:**
   - The trained model: `free_energy.pt`.
   - Simulation Parameters: Molecular dynamics time step, Well-tempered metadynamics parameters (Gaussian height, width, bias factor), and the product basin definition.
-- **Execution:**  ```python MD.py  ```
+- **Execution:**
+  ```
+  python MD.py
+   ```
 - **Bias Extraction:**
   - From the generated bias output, identify the potential values corresponding to 90% filling of the transition barrier.
   - Extract these values and save them into a file named `HILLS` (ensure it is formatted correctly for PLUMED input).
@@ -57,14 +63,18 @@ Calculate the static bias potential required in the subsequent infrequent metady
 
 ## Statistical Analysis
 - **Data Collection:** Perform multiple independent simulations. Assign different initial velocities and compute  $t_{\rm{unbiased}}$ for each run. 
-- **Estimate Mean First Passage Time ($\tau$):** Run the cumulative distribution function script:``` python cdf.py ```
-
+- **Estimate Mean First Passage Time ($\tau$):** Run the cumulative distribution function script:
+  ```
+  python cdf.py
+   ```
   This computes the empirical cumulative distribution function (ECDF) from the collected unbiased transition times and fits it to the theoretical Poisson distribution (TCDF) to estimate the $\tau$ .
-- **p-Value calculation:** Run the Kolmogorov-Smirnov test script: ``` python ks.py ```
-
+- **p-Value calculation:** Run the Kolmogorov-Smirnov test script:
+   ```
+  python ks.py
+   ```
   This calculates the p-value for the fit.
 
 ### Citation
 If you use this workflow in your research, please cite the following paper:
 
-S. Saurav, D. Das, R. Javed, and N. N. Nair, "Kinetics of barrier crossing events from Temperature Accelerated Sliced Sampling simulations", Phys. Chem. Chem. Phys., 2026 (Accepted Manuscript).
+S. Saurav, D. Das, R. Javed, and N. N. Nair, "Kinetics of barrier crossing events from Temperature Accelerated Sliced Sampling simulations", _Phys. Chem. Chem. Phys._, 2026 (Accepted Manuscript).

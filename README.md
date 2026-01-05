@@ -80,11 +80,9 @@ Calculate the static bias potential required in the subsequent infrequent metady
 ## Citation
 Please cite the following references if using this protocol:
 
-- S. Saurav, D. Das, R. Javed, and N. N. Nair, "Kinetics of barrier crossing events from Temperature Accelerated Sliced Sampling simulations", _Phys. Chem. Chem. Phys._, 2026 (Accepted Manuscript).
-- S. Awasthi and N. N. Nair, “Exploring high dimensional free energy landscapes: Temperature accelerated sliced sampling,” _The Journal of Chemical Physics_, **146**, 094108, 2017.
-- E. Schneider, L. Dai, R. Q. Topper, C. Drechsel-Grau, and M. E. Tuckerman, “Stochastic Neural Network Approach for Learning High-Dimensional Free Energy Surfaces,” _Physical Review Letters_, **119**, 150601, 2017.
-- P. Tiwary and M. Parrinello, “From Metadynamics to Dynamics,” _Physical Review Letters_, **111**,230602, 2013.
-- M. Salvalaglio, P. Tiwary, and M. Parrinello, “Assessing the Reliability of the Dynamics Reconstructed from Metadynamics,” _Journal of Chemical Theory and Computation_, **10**,1420–1425, 2014.
+- S. Saurav, D. Das, R. Javed, and N. N. Nair, "Kinetics of barrier crossing events from Temperature Accelerated Sliced Sampling simulations", _Phys. Chem. Chem. Phys._, 2026.
+
+  arXiv: https://doi.org/10.48550/arXiv.2509.05068.
 
 ## License 
 

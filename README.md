@@ -1,5 +1,4 @@
-# Tutorial to Perform Kinetics from Temperature Accelerated Sliced Sampling Simulations
-
+# Kinetics of Barrier Crossing Events from  Temperature Accelerated Sliced Sampling Simulations
 ## Description
 This tutorial outlines the workflow for computing the rate constant of barrier-crossing events from Temperature Accelerated Sliced Sampling (TASS) simulations.
 

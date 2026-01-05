@@ -49,7 +49,7 @@ Before running the analysis, ensure the necessary Python environment is set up.
 Calculate the static bias potential required in the subsequent infrequent metadynamics simulations.
 - **Requirements:**
   - The trained model: `free_energy.pt`.
-  - Simulation Parameters: Molecular dynamics (MD) time step, Well-tempered metadynamics (WTMetaD) parameters (Gaussian height, width, bias factor), and the product basin definition.
+  - Simulation Parameters: Molecular dynamics time step, Well-tempered metadynamics parameters (Gaussian height, width, bias factor), and the product basin definition.
 - **Execution:**
   ```bash
   python MD.py

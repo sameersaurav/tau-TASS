@@ -1,39 +1,30 @@
-# Tutorial to perform kinetics from Temperature Accelerated Sliced Sampling Simulations
+# Tutorial to Perform Kinetics from Temperature Accelerated Sliced Sampling Simulations
 
 ## Description
-This tutorial outlines the workflow for analyzing the kinetics of barrier-crossing events from Temperature Accelerated Sliced Sampling (TASS) simulations.
+This tutorial outlines the workflow for computing the rate constant of barrier-crossing events from Temperature Accelerated Sliced Sampling (TASS) simulations.
 
 ## Environment Setup
 Before running the analysis, ensure the necessary Python environment is set up.
 
-- **Create a Conda Environment:**
-  
-  Run the following command to create a new conda environment named `pytorch`:
-  ```bash
+- **Create a Conda Environment:** Run the following command to create a new conda environment named `pytorch`:
+  ```
   conda create -n pytorch
   ```
-
-- **Activate the Environment:**
-  
-  Activate the newly created environment:
-  ```bash
+- **Activate the Environment:** Activate the newly created environment:
+  ```
   conda activate pytorch
   ```
-
-- **Install PyTorch and dependencies:**
-  
-  Install PyTorch using the following command:
-  ```bash
+- **Install PyTorch and dependencies:** Install PyTorch using the following command:
+  ```
   conda install pytorch::pytorch
   ```
+## Artificial Neural Network (ANN) Representation  of the Free Energy Surfaces (FES)
 
-## Simulation and Analysis Protocol
-
-- **Compute the free energy surface (FES) $F(s)$**
+- **Compute the FES $F(s)$:**
   - Generate the $F(s)$ from your existing TASS simulation data.
   - **Output:** Save the resulting data as `free_energy.dat`.
 
-- **Train an ANN to Represent $F(s)$**
+- **Train an ANN to Represent $F(s)$:**
 
   Train a neural network to learn the continuous free energy landscape from the discrete data points.
   - **Input:** Ensure `free_energy.dat` is in the working directory.
@@ -59,17 +50,17 @@ Calculate the static bias potential required in the subsequent infrequent metady
   - `HILLS` (containing the static bias $V^{\mathrm{b}}_0(s)$ )
   - System topology and parameter files.
 - **Execution:**
-  - Start the IMetaD simulation applying the static bias$V^{\mathrm{b}}_0(s)$ as the initial potential.
+  - Start the IMetaD simulation applying the static bias $V^{\mathrm{b}}_0(s)$ as the initial potential.
   - Simulate until a successful barrier-crossing event occurs.
 - **Time Calculation:**
-  - Record the simulation time ($t_{sim}$) required for the crossing.
-  - Calculate the unbiased transition time ($t_{unbiased}$) by multiplying $t_{sim}$ by the acceleration factor ($\alpha$).
+  - Record the simulation time ($t_{\rm{sim}}$) required for the crossing.
+  - Calculate the unbiased transition time ($t_{\rm{unbiased}}$) by multiplying $t_{\rm{sim}}$ by the acceleration factor ($\alpha$).
 
 ## Statistical Analysis
-- **Data Collection:** Perform multiple independent simulations. Assign different initial velocities and compute  $t_{unbiased}$ for each run. 
-- **Estimate Characteristic Time ($\tau$):** Run the cumulative distribution function script:``` python cdf.py ```
+- **Data Collection:** Perform multiple independent simulations. Assign different initial velocities and compute  $t_{\rm{unbiased}}$ for each run. 
+- **Estimate Mean First Passage Time ($\tau$):** Run the cumulative distribution function script:``` python cdf.py ```
 
-  This computes the empirical cumulative distribution function (ECDF) from the collected unbiased transition times and fits it to the theoretical Poisson distribution (TCDF) to estimate the mean first passage time ( $\tau$ ).
+  This computes the empirical cumulative distribution function (ECDF) from the collected unbiased transition times and fits it to the theoretical Poisson distribution (TCDF) to estimate the $\tau$ .
 - **p-Value calculation:** Run the Kolmogorov-Smirnov test script: ``` python ks.py ```
 
   This calculates the p-value for the fit.

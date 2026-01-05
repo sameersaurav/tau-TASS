@@ -1,9 +1,9 @@
 # Tutorial to perform kinetics from Temperature Accelerated Sliced Sampling Simulations
 
-## Overview
+## Description
 This tutorial outlines the workflow for analyzing the kinetics of barrier-crossing events from Temperature Accelerated Sliced Sampling (TASS) simulations.
 
-## 1. Environment Setup
+## Environment Setup
 Before running the analysis, ensure the necessary Python environment is set up.
 
 - **Create a Conda Environment:**
@@ -27,16 +27,16 @@ Before running the analysis, ensure the necessary Python environment is set up.
   conda install pytorch::pytorch
   ```
 
-## 2. Simulation and Analysis Protocol
+## Simulation and Analysis Protocol
 
-### 1. Compute the free energy surface $F(s)$
-- Generate the free energy surface (FES) $F(s)$ from your existing TASS simulation data.
-- **Output:** Save the resulting data as `free_energy.dat`.
+- **Compute the free energy surface $F(s)$**
+  - Generate the free energy surface (FES) $F(s)$ from your existing TASS simulation data.
+  - **Output:** Save the resulting data as `free_energy.dat`.
 
-### 2. Train an ANN to Represent $F(s)$
-Train a neural network to learn the continuous free energy landscape from the discrete data points.
-- **Input:** Ensure `free_energy.dat` is in the working directory.
-- **Execution:**
+- **Train an ANN to Represent $F(s)$**
+  Train a neural network to learn the continuous free energy landscape from the discrete data points.
+  - **Input:** Ensure `free_energy.dat` is in the working directory.
+  - **Execution:**
   ```bash
   python NN.py
   ```
@@ -45,7 +45,7 @@ Train a neural network to learn the continuous free energy landscape from the di
   - Compare the predicted FES against the original FES to ensure accuracy.
 - **Output:** The trained model is saved as `free_energy.pt`.
 
-### 3. Compute the Static Bias $V^b_0(s)$
+## Compute the Static Bias $V^b_0(s)$
 Calculate the static bias potential required in the subsequent infrequent metadynamics simulations.
 - **Requirements:**
   - The trained model: `free_energy.pt`.
@@ -58,7 +58,7 @@ Calculate the static bias potential required in the subsequent infrequent metady
   - From the generated bias output, identify the potential values corresponding to 90% filling of the transition barrier.
   - Extract these values and save them into a file named `HILLS` (ensure it is formatted correctly for PLUMED input).
 
-### 4. Perform Infrequent Metadynamics (IMetaD)
+## Perform Infrequent Metadynamics (IMetaD)
 - **Preparation:** Place the following files in your working directory:
   - `plumed.dat`
   - `HILLS` (containing the static bias $V^b_0(s)$ )
@@ -70,7 +70,7 @@ Calculate the static bias potential required in the subsequent infrequent metady
   - Record the simulation time ($t_{sim}$) required for the crossing.
   - Calculate the unbiased transition time ($t_{unbiased}$) by multiplying $t_{sim}$ by the acceleration factor ($\alpha$).
 
-### 5. Statistical Analysis
+## Statistical Analysis
 - **Data Collection:** Perform multiple independent simulations. Assign different initial velocities and compute  $t_{unbiased}$ for each run. 
 - **Estimate Characteristic Time ($\tau$):** Run the cumulative distribution function script:
   ```bash
@@ -81,4 +81,9 @@ Calculate the static bias potential required in the subsequent infrequent metady
   ```bash
   python ks.py
   ```
-  This calculates the p-value for the fit. 
+  This calculates the p-value for the fit.
+
+### Citation
+If you use this workflow in your research, please cite the following paper:
+
+S. Saurav, D. Das, R. Javed, and N. N. Nair, "Kinetics of barrier crossing events from Temperature Accelerated Sliced Sampling simulations", Phys. Chem. Chem. Phys., 2026 (Accepted Manuscript).

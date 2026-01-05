@@ -74,7 +74,40 @@ Calculate the static bias potential required in the subsequent infrequent metady
    ```
   This calculates the p-value for the fit.
 
-### Citation
-If you use this workflow in your research, please cite the following paper:
+## Contributors:
+- Prof. Nisanth N. Nair, IIT Kanpur
+ - Sameer Saurav, IIT Kanpur
+## Citation
+Please cite the following references if using this protocol:
 
-S. Saurav, D. Das, R. Javed, and N. N. Nair, "Kinetics of barrier crossing events from Temperature Accelerated Sliced Sampling simulations", _Phys. Chem. Chem. Phys._, 2026 (Accepted Manuscript).
+- S. Saurav, D. Das, R. Javed, and N. N. Nair, "Kinetics of barrier crossing events from Temperature Accelerated Sliced Sampling simulations", _Phys. Chem. Chem. Phys._, 2026 (Accepted Manuscript).
+- S. Awasthi and N. N. Nair, “Exploring high dimensional free energy landscapes: Temperature accelerated sliced sampling,” _The Journal of Chemical Physics_, **146**, 094108, 2017.
+- E. Schneider, L. Dai, R. Q. Topper, C. Drechsel-Grau, and M. E. Tuckerman, “Stochastic Neural Network Approach for Learning High-Dimensional Free Energy Surfaces,” _Physical Review Letters_, **119**, 150601, 2017.
+- P. Tiwary and M. Parrinello, “From Metadynamics to Dynamics,” _Physical Review Letters_, **111**,230602, 2013.
+- M. Salvalaglio, P. Tiwary, and M. Parrinello, “Assessing the Reliability of the Dynamics Reconstructed from Metadynamics,” _Journal of Chemical Theory and Computation_, **10**,1420–1425, 2014.
+
+## License 
+
+MIT License
+
+Copyright (c) 2026 Nisanth N. Nair
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+

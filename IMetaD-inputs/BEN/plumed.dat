@@ -1,0 +1,31 @@
+RESTART
+UNITS ENERGY=kcal/mol
+#==================================================================================================
+#Distance CV across which UMBRELLA SAMPLING HAD BEEN PERFORMED#
+#===================================================================================================
+d: DISTANCE ATOMS=2472,3227  #Distance between C_gamma of Asp171/189 and C7 of BEN (C of diammine group)
+####################################################################################################
+OW: GROUP ATOMS=3247-27549:3
+
+LIG_HEAVY: GROUP ATOMS=3221-3229
+
+LIGsolv: COORDINATION GROUPA=LIG_HEAVY GROUPB=OW R_0=0.4 NLIST NL_CUTOFF=1.2 NL_STRIDE=50
+#=====================================================================================================
+METAD ...
+ LABEL=mtd
+ ARG=d,LIGsolv PACE=8000 HEIGHT=0.63 SIGMA=0.25,0.25 FILE=HILLS BIASFACTOR=10 TEMP=3000 ACCELERATION 
+... METAD
+
+COMMITTOR ...
+  ARG=d
+  STRIDE=100
+  BASIN_LL1=1.0
+  BASIN_UL1=1.5
+
+  FILE=commit.log FMT=%8.4f
+... COMMITTOR
+
+
+#===============================================================================================================================================
+PRINT STRIDE=100 ARG=d,LIGsolv,mtd.bias,mtd.acc FILE=COLVAR_CC
+

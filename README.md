@@ -1,66 +1,84 @@
 # Tutorial to perform kinetics from Temperature Accelerated Sliced Sampling Simulations
 
 ## Overview
-This tutorial outlines the steps to analyze the kinetics of barrier-crossing events from Temperature Accelerated Sliced Sampling (TASS) simulations. For further details, please refer to the following sources:
+This tutorial outlines the workflow for analyzing the kinetics of barrier-crossing events from Temperature Accelerated Sliced Sampling (TASS) simulations.
 
-1. Temperature Accelerated Sliced Sampling (TASS) ([Awasthi & Nair, _JCP_ 2017](https://doi.org/10.1063/1.4977704),  [Pal et al., _JCC_ 2021](https://doi.org/10.1063/1.4977704), [Tutorial](https://sites.google.com/view/the-nnn-group/tutorials/tass?authuser=0))
-2. Artificial Neural Networks (ANNs) ([Schneider et al., _PRL_ 2017](https://doi.org/10.1103/PhysRevLett.119.150601))
-3. Infrequent Metadynamics (IMetaD) ([Tiwary and Parrinello, _PRL_ 2013](https://doi.org/10.1103/PhysRevLett.111.230602), [Salvalaglio et al., _JCTC_ 2014](https://doi.org/10.1021/ct500040r))
+## 1. Environment Setup
+Before running the analysis, ensure the necessary Python environment is set up.
 
-## Steps to Create a Conda Environment for PyTorch
-   - **Create a Conda Environment**
+- **Create a Conda Environment:**
+  
+  Run the following command to create a new conda environment named `pytorch`:
+  ```bash
+  conda create -n pytorch
+  ```
 
-     Run the following command to create a new conda environment named `pytorch`: 
-      ```
-      conda create -n pytorch
-      ``` 
-   - **Activate the Environment**
+- **Activate the Environment:**
+  
+  Activate the newly created environment:
+  ```bash
+  conda activate pytorch
+  ```
 
-     Activate the newly created environment:
-     ```
-     conda activate pytorch
-     ```
-   - **Install Pytorch and Other Required Packages**
+- **Install PyTorch and dependencies:**
+  
+  Install PyTorch using the following command:
+  ```bash
+  conda install pytorch::pytorch
+  ```
 
-     Install PyTorch using the following command:
-     ```
-     conda install pytorch::pytorch
-     ```
-     
-## Simulation and Analysis Steps
-1. ### Compute the free energy surface _F(**s**)_ from TASS simulations
-   - Generate the free energy surface  _F(**s**)_ using your TASS simulation data.
-2. ### Train an ANN to Represent _F(**s**)_
-   - **Input Data:** use the file `free_energy.dat` as input for the neural network.
-   - **Execution:** Run the command:
-     ```
-     python NN.py
-      ``` 
-   - **Output Verification:**
-     - Check the training and validation loss plots. Both should ideally be close to zero.
-     - Verify the generated plot of the predicted free energy surface for correctness.
-     - **Model Saving**: The trained model is saved as `free_energy.pt`.
-3. ### Compute the Bias V<sup>b</sup><sub>0</sub> (<strong>s</strong>)
-   - **Parameters**: Specify the molecular dynamics (MD) time step and the well-tempered metadynamics (WTMetaD) parameters (Gaussian's height, width, and bias factor) along with the location of the transition state.
-   - **Model File:** Ensure that `free_energy.pt` is in the same directory.
-   - **Execution:** Run the command:
-     ```
-     python MD.py
-     ``` 
-   - **Bias Extraction:** From the resulting bias file, extract the bias value corresponding to 90% of the transition barrier filling. Save these values in the `HILL` file.
-4. ### Perform MD with "Infrequent Metadynamics (IMetaD)".
-   - **Preparation:** Place the files `plumed.dat` and `HILL` in the working directory along with the system’s topology and parameter files.
-   - **Execution:** Start the IMetaD simulation using V<sup>b</sup><sub>0</sub> (<strong>s</strong>) as the initial bias. Simulate until a barrier-crossing event occurs.
-   - **Time Calculation:** Record the simulation time and multiply it by the acceleration factor to obtain the corresponding unbiased simulation time.
-5. ### Statistical Analysis 
-   - **Multiple Simulations:** Run several simulations using the same initial structure but with different initial velocities.
-   - **$\tau$ Estimation:**  Run the following command:
-     ````
-     python cdf.py
-     ````
-     This script computes the empirical cumulative distribution function (ECDF) from the unbiased transition times and fits it to the theoretical cumulative distribution function (TCDF) to estimate the characteristic time $\tau$.
-   - **p-Value calculation:** Run the following command:
-      ````
-     python ks.py
-     ````
-     This will compute the p-value for the fit.
+## 2. Simulation and Analysis Protocol
+
+### 1. Compute the free energy surface $F(s)$
+- Generate the free energy surface (FES) $F(s)$ from your existing TASS simulation data.
+- **Output:** Save the resulting data as `free_energy.dat`.
+
+### 2. Train an ANN to Represent $F(s)$
+Train a neural network to learn the continuous free energy landscape from the discrete data points.
+- **Input:** Ensure `free_energy.dat` is in the working directory.
+- **Execution:**
+  ```bash
+  python NN.py
+  ```
+- **Verification:**
+  - Check the training and validation loss plots. Both should converge close to zero.
+  - Compare the predicted FES against the original FES to ensure accuracy.
+- **Output:** The trained model is saved as `free_energy.pt`.
+
+### 3. Compute the Static Bias $V^b_0(s)$
+Calculate the static bias potential required in the subsequent infrequent metadynamics simulations.
+- **Requirements:**
+  - The trained model: `free_energy.pt`.
+  - Simulation Parameters: Molecular dynamics (MD) time step, Well-tempered metadynamics (WTMetaD) parameters (Gaussian height, width, bias factor), and the product basin definition.
+- **Execution:**
+  ```bash
+  python MD.py
+  ```
+- **Bias Extraction:**
+  - From the generated bias output, identify the potential values corresponding to 90% filling of the transition barrier.
+  - Extract these values and save them into a file named `HILLS` (ensure it is formatted correctly for PLUMED input).
+
+### 4. Perform Infrequent Metadynamics (IMetaD)
+- **Preparation:** Place the following files in your working directory:
+  - `plumed.dat`
+  - `HILLS` (containing the static bias $V^b_0(s)$ )
+  - System topology and parameter files.
+- **Execution:**
+  - Start the IMetaD simulation applying the static bias $V^b_0(s)$ as the initial potential.
+  - Run the simulation until a successful barrier-crossing event occurs.
+- **Time Calculation:**
+  - Record the simulation time ($t_{sim}$) required for the crossing.
+  - Calculate the unbiased transition time ($t_{unbiased}$) by multiplying $t_{sim}$ by the acceleration factor ($\alpha$).
+
+### 5. Statistical Analysis
+- **Data Collection:** Perform multiple independent simulations. Assign different initial velocities and compute  $t_{unbiased}$ for each run. 
+- **Estimate Characteristic Time ($\tau$):** Run the cumulative distribution function script:
+  ```bash
+  python cdf.py
+  ```
+  This computes the empirical cumulative distribution function (ECDF) from the collected unbiased transition times and fits it to the theoretical Poisson distribution (TCDF) to estimate the characteristic timescale $\tau$.
+- **p-Value calculation:** Run the Kolmogorov-Smirnov test script:
+  ```bash
+  python ks.py
+  ```
+  This calculates the p-value for the fit. 

@@ -1,6 +1,6 @@
 # Kinetics of Barrier Crossing Events from Temperature Accelerated Sliced Sampling Simulations
 ## Description
-This tutorial outlines the workflow for computing the rate constant of barrier-crossing events from Temperature Accelerated Sliced Sampling (TASS) simulations.
+This tutorial outlines the workflow for computing the rate constants of barrier crossing events using Temperature Accelerated Sliced Sampling (TASS) simulations. Example input files are provided for alanine dipeptide _in vacuo_.
 
 ## Environment Setup
 Before running the analysis, ensure the necessary Python environment is set up.

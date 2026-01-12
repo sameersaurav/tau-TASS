@@ -75,13 +75,12 @@ Calculate the static bias potential required in the subsequent infrequent metady
   This calculates the p-value for the fit.
 
 ## Contributors
-- Prof. Nisanth N. Nair, IIT Kanpur
- - Sameer Saurav, IIT Kanpur
+- Prof. Nisanth N. Nair
+- Sameer Saurav
 ## Citation
-Please cite the following references if using this protocol:
+Please cite the following reference if using this protocol:
 
 - S. Saurav, D. Das, R. Javed, and N. N. Nair, "Kinetics of barrier crossing events from Temperature Accelerated Sliced Sampling simulations", _Phys. Chem. Chem. Phys._, 2026.
-
   DOI: https://doi.org/10.1039/D5CP03448E.
 
 ## License 

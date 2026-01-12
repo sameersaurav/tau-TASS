@@ -82,7 +82,7 @@ Please cite the following references if using this protocol:
 
 - S. Saurav, D. Das, R. Javed, and N. N. Nair, "Kinetics of barrier crossing events from Temperature Accelerated Sliced Sampling simulations", _Phys. Chem. Chem. Phys._, 2026.
 
-  arXiv: https://doi.org/10.48550/arXiv.2509.05068.
+  DOI: https://doi.org/10.1039/D5CP03448E.
 
 ## License 
 
